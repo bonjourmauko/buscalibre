@@ -1,6 +1,5 @@
-require 'uri'
 require 'yajl'
-require 'yajl/http_stream'
+require 'typhoeus'
 require 'buscalibre/base'
 require 'buscalibre/product'
 

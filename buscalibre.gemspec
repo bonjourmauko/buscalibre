@@ -21,5 +21,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
 
   s.add_dependency "yajl-ruby"
+  s.add_dependency "typhoeus"
   s.add_dependency "i18n"
 end
