@@ -11,7 +11,7 @@ module Buscalibre
     end
 
     def api_call resource, id
-      Yajl::HttpStream.get( URI.parse( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ), symbolize_keys: true )
+      result = Yajl::HttpStream.get( URI.parse( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ), symbolize_keys: true )
     end
   end
 end
