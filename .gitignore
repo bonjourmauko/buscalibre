@@ -3,3 +3,4 @@
 Gemfile.lock
 pkg/*
 .DS_Store
+config/buscalibre.yml
