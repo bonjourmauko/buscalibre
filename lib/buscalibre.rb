@@ -1,3 +1,4 @@
+require 'yaml'
 require 'yajl'
 require 'typhoeus'
 require 'buscalibre/base'

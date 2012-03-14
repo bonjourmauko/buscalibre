@@ -1,9 +1,9 @@
 module Buscalibre
   class Base
-    def initialize
-      @@settings    ||= self.load File.join(Rails.root, 'config', 'buscalibre.yml')
-      @@env         ||= Rails.env
-      @@credentials ||= @@settings[@@env]
+    def initialize env = nil, filepath = nil, settings = nil
+      @@env         ||= env      || Rails.env
+      @@filepath    ||= filepath || Rails.root
+      @@settings    ||= settings || self.load(File.join(@@filepath, 'config', 'buscalibre.yml'))[@@env]
     end
 
     def load(file)
@@ -11,7 +11,11 @@ module Buscalibre
     end
 
     def api_call resource, id
-      Yajl::Parser.parse( Typhoeus::Request.get( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ).body, symbolize_keys: true ).first
+      Yajl::Parser.parse Typhoeus::Request.get( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ).body, symbolize_keys: true
+    end
+
+    def settings
+      @@settings
     end
   end
 end
