@@ -11,7 +11,9 @@ module Buscalibre
     end
 
     def api_call resource, id
-      Yajl::Parser Typhoeus::Request.get( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ).body, symbolize_keys: true
+      response = Yajl::Parser.parse( Typhoeus::Request.get( "http://www.buscalibre.com/api.php/s/#{resource}/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ).body, symbolize_keys: true )
+      return response.first if response.instance_of? Array
+      response
     end
 
     def settings
