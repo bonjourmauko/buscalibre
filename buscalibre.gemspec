@@ -5,9 +5,9 @@ require "buscalibre/version"
 Gem::Specification.new do |s|
   s.name        = "buscalibre"
   s.version     = Buscalibre::VERSION
-  s.authors     = ["maukoquiroga"]
+  s.authors     = ["Mauko Quiroga"]
   s.email       = ["mauko@acid.cl"]
-  s.homepage    = "http://flavors.me/maukoquiroga"
+  s.homepage    = "https://github.com/maukoquiroga/buscalibre"
   s.summary     = %q{Buscalibre.com's API Client}
   s.description = %q{Basic Ruby Wrapper to Buscalibre.com's API.}
 
