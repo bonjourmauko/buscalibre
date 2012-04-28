@@ -5,7 +5,9 @@ module Buscalibre
     end
 
     def self.find id
-      self.new.api_call 'product', id
+      response = Yajl::Parser.parse( Typhoeus::Request.get( "http://www.buscalibre.com/api.php/s/product/get?id=#{id}&user=#{@@settings['user']}&key=#{@@settings['api_key']}" ).body ).recursive_symbolize_keys!
+      return response.first if response.instance_of? Array
+      response
     end
   end
 end

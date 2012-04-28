@@ -6,7 +6,7 @@ describe Buscalibre::Product do
   let!(:valid_product)    { Buscalibre::Product.find 118 }
   let!(:invalid_product)  { Buscalibre::Product.find 10000000000000 }
 
-  context "given we have a valid product id", :product do
+  context "given we have a valid product id" do
     it { valid_product.should be_an_instance_of  Hash    }
     it { valid_product[:id_producto].to_i.should ==  118 }
     it { valid_product[:nombre].should_not        be  nil }
