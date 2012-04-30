@@ -1,5 +1,9 @@
 module Buscalibre
   class Tag < Buscalibre::Base
+    def initialize
+      super unless defined? @@settings
+    end
+
     def self.tree
       response = Typhoeus::Request.get( "http://www.buscalibre.com/api.php/categoria_tree" )
       body     = Yajl::Parser.parse( response.body )
